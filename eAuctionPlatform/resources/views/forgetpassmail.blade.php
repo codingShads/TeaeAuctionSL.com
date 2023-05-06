@@ -10,6 +10,5 @@
     
     <p>{{ $data['body'] }}</p>
     <a href="{{ $data['url'] }}">Click Here to Reset Password</a>
-    <p>Thank you</p>
 </body>
 </html>

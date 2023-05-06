@@ -224,12 +224,13 @@ class AdminController extends Controller
     public function auctionItemsummary(){
         $auctionList = valuation::all();
         return view('users.auctionitems',compact('auctionList'));
-    }
+    }   
     
     
-    public function auctionboard(){
-        $valuationready = valuation::all();
-        return view('users.auctionProduct',compact('valuationready'));
+    public function auctionboard($id){
+        $valuationready = valuation::findOrFail($id);
+        return view('users.auctionProduct', compact('valuationready'));
+
     }
 
     

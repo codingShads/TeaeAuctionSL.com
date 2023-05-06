@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Session;
 class AuthController extends Controller
 {
     public function loadRegister(){
+        // dd(Auth::user()->is_admin);
         if (Auth::user() && Auth::user()->is_admin == 1) {
             return redirect('/admin/dashboard');
         } else if(Auth::user() && Auth::user()->is_admin == 0){
@@ -68,7 +69,7 @@ class AuthController extends Controller
             if (Auth::user()->is_admin == 1) {
                 return redirect('/admin/dashboard');
             } else {
-                return redirect('/dashboard');
+                return redirect('/users/dashboard');
             }
             
         } else {
@@ -100,14 +101,14 @@ class AuthController extends Controller
         try {
             $user = User::where('email',$request->email)->get();
             if (count($user) > 0) {
-                $token = Str::random(30);
+                $token = Str::random(15);
                 $domain = URL::to('/');
                 $url = $domain.'/resetpassword?token='.$token;
 
                 $data['url']= $url;
                 $data['email']=$request->email;
                 $data['title']='Password Reset';
-                $data['body']='Please click Here';
+                $data['body']='Click to Reset Password';
 
                 Mail::send('forgetpassmail', ['data'=>$data], function ($message) use ($data) {
                     $message->to($data['email'])->subject($data['title']);
@@ -123,10 +124,10 @@ class AuthController extends Controller
                         'created_at' => $dateandTime
                     ]
                     );
-                    return back()->with('success', 'Please reset your password using your mail');
+                    return back()->with('success', 'Password Reset Request sent to you Mail');
 
             } else {
-                return back()->with('error', 'Email not exixts');
+                return back()->with('error', 'Email is not Registered with Us, Please try again');
             }
             
 

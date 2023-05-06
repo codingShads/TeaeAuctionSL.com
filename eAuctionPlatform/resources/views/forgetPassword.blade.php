@@ -10,13 +10,7 @@
         @endforeach
     @endif
 
-    @if (Session::has('error'))
-        <p style="color:red;">{{ Session::get('error') }}</p>
-    @endif
-
-    @if (Session::has('success'))
-        <p style="color:green;">{{ Session::get('success') }}</p>
-    @endif
+    
 
 
 
@@ -33,8 +27,13 @@
                 <div class="px-8 mb-4 text-center">
                     <h3 class="pt-4 mb-2 text-2xl">Forgot Your Password?</h3>
                     <p class="mb-4 text-sm text-gray-700">
-                        We get it, stuff happens. Just enter your email address below and we'll send you a
-                        link to reset your password!
+                        @if (Session::has('error'))
+                            <p style="color:red;">{{ Session::get('error') }}</p>
+                        @endif
+
+                        @if (Session::has('success'))
+                            <p style="color:green;">{{ Session::get('success') }}</p>
+                        @endif
                     </p>
                 </div>
                 <form action="{{ route('forgetpass')}}" class="px-8 pt-6 pb-8 mb-4 bg-white rounded" method="POST">
@@ -53,7 +52,7 @@
                     <div class="mb-6 text-center">
                         <button
                             class="w-full px-4 py-2 font-bold text-white bg-red-500 rounded-full hover:bg-red-700 focus:outline-none focus:shadow-outline"
-                            type="button"
+                            type="submit"
                         >
                             Reset Password
                         </button>

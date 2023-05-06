@@ -3,15 +3,7 @@
 
 @section('layoutUI')
 
-    @if ($errors->any())
-        @foreach ( $errors->all() as $error )
-            <p style="color:red;"> {{ $error }}</p>
-        @endforeach
-    @endif
-
-    @if (Session::has('error'))
-        <p style="color:red;">{{ Session::get('error') }}</p>
-    @endif
+    
 
 <header class="max-w-lg mx-auto">
     <a href="#">
@@ -39,6 +31,15 @@
             <div class="flex justify-end">
                 <a href="/forgetPassword" class="text-sm text-purple-600 hover:text-purple-700 hover:underline mb-6">Forgot your password?</a>
             </div>
+            @if ($errors->any())
+            @foreach ( $errors->all() as $error )
+                <p style="color:red;"> {{ $error }}</p>
+            @endforeach
+            @endif
+
+    @if (Session::has('error'))
+        <p style="color:red;">{{ Session::get('error') }}</p>
+    @endif
             <button class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded shadow-lg hover:shadow-xl transition duration-200" type="submit">Sign In</button>
         </form>
     </section>

@@ -67,8 +67,8 @@ Route::group(['middleware'=>['web','forAdmin']], function(){
 
 Route::group(['middleware'=>['web','forUsers']], function(){
     Route::get('/users/dashboard', [AdminController::class, 'frontuserDashboard']);
-    Route::get('/users/auctionitems', [AdminController::class, 'auctionItemsummary']);
-    Route::get('/users/auctionProduct', [AdminController::class, 'auctionBoard']);
+    Route::get('/users/auctionitems', [AdminController::class, 'auctionItemsummary'])->name('auctionItemsummary');
+    Route::get('/users/auctionProduct/{id}', [AdminController::class, 'auctionboard'])->name('auctionboard');
     
     Route::get('/bidProduct', [AdminController::class, 'bidStart']);
     Route::post('/placeBid',[AdminController::class, 'placeBid'])->name('placeBid');

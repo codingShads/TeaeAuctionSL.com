@@ -7,8 +7,8 @@
 
 <div class="px-24 mx-52 my-5">
     <ul>
-        @if (count($valuationready) > 0)
-            @foreach ( $valuationready as $valuationready )
+        {{-- @if (count($valuationready) > 0) --}}
+            {{-- @foreach ( $valuationready as $valuationready ) --}}
 
         <li class="mx-5 my-5 py-2 ">
             <div class="grid grid-cols-2  ">
@@ -46,12 +46,12 @@
                 
             </div>
         </li>
-        @endforeach
-        @else
+        {{-- @endforeach --}}
+        {{-- @else
             <tr>
                 <td>No Bids Available</td>
             </tr>
-        @endif
+        @endif --}}
     </ul>
 </div>
 
