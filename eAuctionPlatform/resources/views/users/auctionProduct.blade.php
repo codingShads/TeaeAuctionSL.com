@@ -59,7 +59,7 @@
 <script>
     
     var startingBid = 700;
-    var endTime = Date.now() + (60 * 1000); // 1 minute in milliseconds
+    var endTime = Date.now() + (15 * 1000); // 1 minute in milliseconds
 
     // get the timer element and update it every second
     var timerElem = document.getElementById('timer');
@@ -91,7 +91,7 @@
       }
       biddingHistoryElem.innerHTML = "<li>$" + bidAmount.toFixed(2) + "</li>" + biddingHistoryElem.innerHTML;
       startingBid = bidAmount;
-      endTime = Date.now() + (10 * 1000); // reset the end time to 10 seconds
+      endTime = Date.now() + (5 * 1000); // reset the end time to 10 seconds
       document.getElementById('final-bid').textContent = ""; // clear the final bid display
     });
     document.getElementById("myButton").style.display = "none";
